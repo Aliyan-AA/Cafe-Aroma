@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aroma Haven - Specialty Coffee Cafe</title>
+    <style>
+      /* Reset and basic styles */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Georgia", serif;
+        line-height: 1.6;
+        color: #3e2c2c;
+        background-color: #f8f1e4;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header styles */
+      header {
+        background-color: #5d4037;
+        color: #f8f1e4;
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+      }
+
+      nav a {
+        color: #f8f1e4;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #d7ccc8;
+      }
+
+      /* Hero section styles */
+      .hero {
+        background-image: url("images/hero.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 70vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #f8f1e4;
+      }
+
+      .hero-content {
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 2rem;
+        border-radius: 10px;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background-color: #8d6e63;
+        color: #f8f1e4;
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      .cta-button:hover {
+        background-color: #795548;
+      }
+
+      /* Section styles */
+      section {
+        padding: 4rem 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        color: #5d4037;
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      /* Featured products styles */
+      .featured-products {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+      }
+
+      .product-card {
+        flex: 0 1 calc(25% - 2rem);
+        background-color: #d7ccc8;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .product-info {
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .product-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      .product-price {
+        font-weight: bold;
+        color: #8d6e63;
+      }
+
+      /* About section styles */
+      .about {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+      }
+
+      .about-content,
+      .about-image {
+        flex: 1;
+      }
+
+      .about-image img {
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-content p {
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      /* Menu section styles */
+      .menu-categories {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .category-button {
+        background-color: #8d6e63;
+        color: #f8f1e4;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      .category-button:hover {
+        background-color: #795548;
+      }
+
+      .menu-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+      }
+
+      .menu-item {
+        flex: 0 1 calc(33.333% - 2rem);
+        background-color: #d7ccc8;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .menu-item-info {
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .menu-item-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      .menu-item-price {
+        font-weight: bold;
+        color: #8d6e63;
+      }
+
+      /* Testimonials section styles */
+      .testimonials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+      }
+
+      .testimonial-card {
+        flex: 0 1 calc(33.333% - 2rem);
+        background-color: #d7ccc8;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 1rem;
+      }
+
+      .testimonial-author {
+        font-weight: bold;
+        text-align: right;
+      }
+
+      /* Contact section styles */
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 1rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #8d6e63;
+        border-radius: 5px;
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      .form-group textarea {
+        height: 150px;
+      }
+
+      .submit-button {
+        background-color: #8d6e63;
+        color: #f8f1e4;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      .submit-button:hover {
+        background-color: #795548;
+      }
+
+      /* Footer styles */
+      footer {
+        background-color: #5d4037;
+        color: #f8f1e4;
+        padding: 2rem 0;
+        text-align: center;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .footer-section {
+        flex: 1 1 300px;
+      }
+
+      .footer-section h4 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .footer-section p,
+      .footer-section ul {
+        font-size: 0.9rem;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-section ul li a {
+        color: #f8f1e4;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section ul li a:hover {
+        color: #d7ccc8;
+      }
+
+      .social-media {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-media a {
+        color: #f8f1e4;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+      }
+
+      .social-media a:hover {
+        color: #d7ccc8;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        .about {
+          flex-direction: column;
+        }
+
+        .menu-item,
+        .testimonial-card {
+          flex: 0 1 calc(50% - 2rem);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .menu-item,
+        .testimonial-card {
+          flex: 0 1 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container header-content">
+        <div class="logo">Aroma Haven</div>
+        <nav>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="container hero-content">
+        <h1>Welcome to Aroma Haven</h1>
+        <p>Your favorite spot for coffee, pastries, and more.</p>
+        <a href="#menu" class="cta-button">Explore Our Menu</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about">
+        <div class="about-content">
+          <h2 class="section-title">About Us</h2>
+          <p>
+            Aroma Haven is more than just a coffee shop. We are a community
+            gathering spot where you can enjoy premium coffee, fresh pastries,
+            and the company of friends. Whether you're here to work, relax, or
+            meet with friends, we have something for everyone.
+          </p>
+          <p>
+            Our mission is to provide a cozy and welcoming environment where you
+            can unwind and enjoy quality coffee and food.
+          </p>
+        </div>
+        <div class="about-image">
+          <img src="Coffee Shop.webp" alt="Cozy Coffee Shop Interior" />
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="container">
+        <h2 class="section-title">Our Menu</h2>
+        <div class="menu-categories">
+          <button class="category-button">Coffee</button>
+          <button class="category-button">Pastries</button>
+          <button class="category-button">Sandwiches</button>
+        </div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <img src="Coffee image.jpeg" alt="Coffee Image" />
+            <div class="menu-item-info">
+              <h3 class="menu-item-title">Espresso</h3>
+              <p class="menu-item-price">$3.00</p>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <img src="Pastry imgage.webp" alt="Pastry Image" />
+            <div class="menu-item-info">
+              <h3 class="menu-item-title">Croissant</h3>
+              <p class="menu-item-price">$2.50</p>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <img src="Sandwich-Ideas.jpg" alt="Sandwich Image" />
+            <div class="menu-item-info">
+              <h3 class="menu-item-title">Ham & Cheese Sandwich</h3>
+              <p class="menu-item-price">$5.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="container">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="testimonials">
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "Aroma Haven is my go-to place for a morning coffee and a quick
+              bite. The atmosphere is cozy, and the staff are always friendly."
+            </p>
+            <p class="testimonial-author">- Jane Doe</p>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "The best coffee shop in town! I love the variety of pastries, and
+              their coffee is always on point."
+            </p>
+            <p class="testimonial-author">- John Smith</p>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "Great place to relax and unwind. The ambiance is perfect, and
+              their sandwiches are delicious!"
+            </p>
+            <p class="testimonial-author">- Emily Johnson</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact Us</h2>
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message"></textarea>
+          </div>
+
+          <button type="submit" class="submit-button">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container footer-content">
+        <div class="footer-section">
+          <h4>About Aroma Haven</h4>
+          <p>
+            Aroma Haven is your local cafe offering the finest coffee, pastries,
+            and sandwiches. Visit us for a warm, friendly atmosphere and
+            delicious treats.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact Us</h4>
+          <ul>
+            <li>123 Coffee Street, Mocha City</li>
+            <li>Phone: (123) 456-7890</li>
+            <li>Email: info@aromahaven.com</li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <div class="social-media">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
